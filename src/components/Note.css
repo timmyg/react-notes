@@ -6,6 +6,8 @@
   /* height: inherit; */
   color: white;
   word-break: break-all;
+  border-radius: 4px;
+  margin: 4px;
 }
 
 .action {

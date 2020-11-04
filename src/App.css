@@ -31,8 +31,6 @@ body {
 
 .my-notes {
   background: #e2b387 url("./cork.jpg") repeat;
-  /* display: flex; */
-  /* height: 100%; */
   flex-wrap: wrap;
 }
 

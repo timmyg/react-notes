@@ -4,11 +4,14 @@ import "./Form.css";
 
 const Form = (props) => {
   const availableColors = [
-    { hex: "#2196F3" },
-    { hex: "#0097A7" },
-    { hex: "#6A1B9A" },
-    { hex: "#E65100" },
-    { hex: "#455A64" },
+    { hex: "#e53935" },
+    { hex: "#d81b60" },
+    { hex: "#8e24aa" },
+    { hex: "#5e35b1" },
+    { hex: "#005cb2" },
+    { hex: "#00acc1" },
+    { hex: "#fdd835" },
+    { hex: "#fb8c00" },
   ];
   const hasNoteText = props.note.text.length;
   const hasColor = props.note.color.length;
