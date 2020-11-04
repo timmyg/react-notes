@@ -1,0 +1,28 @@
+.note {
+  position: relative;
+  max-width: 160px;
+  display: inline-block;
+  color: white;
+  padding: 16px 24px;
+  border-radius: 4px;
+  float: left;
+  margin-right: 8px;
+  margin-top: 8px;
+}
+
+.action {
+  position: absolute;
+  top: 4px;
+}
+.action:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.delete {
+  right: 4px;
+}
+
+.edit {
+  left: 4px;
+}

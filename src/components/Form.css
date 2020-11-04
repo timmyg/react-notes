@@ -1,0 +1,42 @@
+header {
+  text-align: center;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  line-height: 28px;
+}
+
+button {
+  padding: 1em 1.5em;
+  border-radius: 4px;
+  background: none;
+  border: none;
+}
+
+button[type="submit"] {
+  background: #eeeeee;
+  color: black;
+}
+
+.color-wrappers {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.color-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 70px;
+}
+
+.color-wrapper label {
+  position: absolute;
+  top: -7px;
+  border-radius: 4px;
+}

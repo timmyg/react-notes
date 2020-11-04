@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import "./Note.css";
 
 const Note = (props) => {
   const onHandleEdit = () => {
@@ -13,15 +14,20 @@ const Note = (props) => {
       className="note"
       style={{
         background: props.note.color,
-        maxWidth: "140px",
-        display: "inline-block",
-        color: "white",
-        padding: "16px",
-        borderRadius: "4px",
       }}
     >
-      <FontAwesomeIcon icon={faTrash} onClick={onHandleDelete} />
-      <FontAwesomeIcon icon={faEdit} onClick={onHandleEdit} />
+      <FontAwesomeIcon
+        className="action delete"
+        size="xs"
+        icon={faTrash}
+        onClick={onHandleDelete}
+      />
+      <FontAwesomeIcon
+        className="action edit"
+        size="xs"
+        icon={faEdit}
+        onClick={onHandleEdit}
+      />
 
       {props.note.text}
     </div>
