@@ -1,22 +1,21 @@
 .note {
-  position: relative;
   max-width: 160px;
-  display: inline-block;
+  /* position: relative; */
+  padding: 16px;
+  float: left;
+  /* height: inherit; */
   color: white;
-  padding: 16px 24px;
-  border-radius: 4px;
-  margin-right: 8px;
-  margin-top: 8px;
-  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .action {
   position: absolute;
   top: 4px;
+  opacity: 0.3;
 }
 .action:hover {
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .delete {

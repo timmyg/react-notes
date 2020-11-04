@@ -1,5 +1,7 @@
 .empty {
+  margin-top: 100px;
   text-align: center;
+  width: 100%;
 }
 
 .note:nth-child(1n) {

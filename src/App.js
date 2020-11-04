@@ -65,14 +65,11 @@ function App() {
         />
       </div>
       <div className="column my-notes">
-        <section className="notes">
-          <h3>My Notes</h3>
-          <List
-            notes={notes}
-            onHandleEdit={onHandleEdit}
-            onHandleDelete={onHandleDelete}
-          />
-        </section>
+        <List
+          notes={notes}
+          onHandleEdit={onHandleEdit}
+          onHandleDelete={onHandleDelete}
+        />
       </div>
     </div>
   );

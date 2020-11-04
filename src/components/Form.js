@@ -74,10 +74,12 @@ const Form = (props) => {
         <div className="buttons">
           {props.isEditMode ? (
             <div>
+              <button type="submit" className="ready">
+                Update
+              </button>
               <button type="reset" onClick={props.onCancel}>
                 Cancel
               </button>
-              <button type="submit">Update</button>
             </div>
           ) : (
             <button

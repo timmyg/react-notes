@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
+:root {
+  --success: #4caf50;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -27,6 +31,9 @@ body {
 
 .my-notes {
   background: #e2b387 url("./cork.jpg") repeat;
+  /* display: flex; */
+  /* height: 100%; */
+  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 1200px) {
