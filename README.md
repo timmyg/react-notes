@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-See a [demo](https://vercel.com/timmyg/react-notes/feh4hslab) here.
+See a [demo](https://react-notes-nu.vercel.app/) here.
 
 ## Available Scripts
 
