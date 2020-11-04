@@ -21,6 +21,7 @@ const Note = (props) => {
           placeholder="Grab some mustard"
           value={props.note.text}
           onChange={props.handleNewNoteText}
+          data-testid="note-input"
           required
         />
         <div className="color-wrappers">
@@ -33,6 +34,7 @@ const Note = (props) => {
                 checked={color.hex === props.note.color}
                 value={color.hex}
                 onChange={props.handleColorChange}
+                data-testid="color-input"
                 required
               />
               <label
@@ -56,7 +58,9 @@ const Note = (props) => {
               <button type="submit">Update</button>
             </div>
           ) : (
-            <button type="submit">Add</button>
+            <button type="submit" data-testid="add">
+              Add
+            </button>
           )}
         </div>
       </form>

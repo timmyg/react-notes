@@ -15,6 +15,7 @@ const Note = (props) => {
       style={{
         background: props.note.color,
       }}
+      data-testid="note"
     >
       <FontAwesomeIcon
         className="action delete"
