@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Form from "./components/Form";
-import Note from "./components/Note";
+import List from "./components/List";
 import "./App.css";
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
 
   return (
     <div className="row">
-      <div className="column">
+      <div className="column note-form">
         <Form
           isEditMode={isEditMode}
           onSubmit={onSubmit}
@@ -64,16 +64,14 @@ function App() {
           onCancel={onCancel}
         />
       </div>
-      <div className="column">
+      <div className="column my-notes">
         <section className="notes">
-          {notes.map((note) => (
-            <Note
-              key={note.id}
-              note={note}
-              onHandleEdit={onHandleEdit}
-              onHandleDelete={onHandleDelete}
-            />
-          ))}
+          <h3>My Notes</h3>
+          <List
+            notes={notes}
+            onHandleEdit={onHandleEdit}
+            onHandleDelete={onHandleDelete}
+          />
         </section>
       </div>
     </div>

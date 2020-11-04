@@ -1,9 +1,10 @@
 header {
-  text-align: center;
+  text-align: left;
 }
 
 input[type="text"] {
   width: 100%;
+  max-width: 500px;
   padding: 10px;
   line-height: 28px;
 }
@@ -20,23 +21,37 @@ button[type="submit"] {
   color: black;
 }
 
-.color-wrappers {
-  margin: 16px 0;
-  text-align: center;
-}
-
 .buttons {
-  text-align: center;
+  margin-top: 32px;
 }
 
 .color-wrapper {
   display: inline-block;
   position: relative;
-  width: 70px;
+  width: 48px;
 }
 
 .color-wrapper label {
   position: absolute;
   top: -7px;
+  left: 0px;
   border-radius: 4px;
+}
+
+.check {
+  margin-left: 4px;
+  color: #4caf50;
+}
+
+button.ready {
+  background: #4caf50;
+  color: white;
+}
+
+input:checked + label {
+  border: 2px solid white;
+}
+
+input:checked + label {
+  border-color: #4caf50;
 }

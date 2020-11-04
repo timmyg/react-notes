@@ -1,17 +1,29 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import "./Form.css";
 
-const Note = (props) => {
+const Form = (props) => {
   const availableColors = [
-    { hex: "#1DE9B6" },
+    { hex: "#2196F3" },
     { hex: "#0097A7" },
     { hex: "#6A1B9A" },
     { hex: "#E65100" },
     { hex: "#455A64" },
   ];
+  const hasNoteText = props.note.text.length;
+  const hasColor = props.note.color.length;
+  console.log(props.note.color);
   return (
     <div>
-      <header className="App-header">
-        <h1>{props.isEditMode ? "Edit Note" : "Add a Note"}</h1>
+      <header>
+        <h3>
+          {props.isEditMode ? "Edit Note" : "Add a Note"}
+          {hasNoteText ? (
+            <FontAwesomeIcon className="check" size="xs" icon={faCheck} />
+          ) : (
+            ""
+          )}
+        </h3>
       </header>
       <form onSubmit={props.onSubmit}>
         <input
@@ -24,6 +36,16 @@ const Note = (props) => {
           data-testid="note-input"
           required
         />
+        <header>
+          <h3>
+            Choose Color
+            {hasColor ? (
+              <FontAwesomeIcon className="check" size="xs" icon={faCheck} />
+            ) : (
+              ""
+            )}
+          </h3>
+        </header>
         <div className="color-wrappers">
           {availableColors.map((color) => (
             <div key={color.hex} className="color-wrapper">
@@ -31,7 +53,7 @@ const Note = (props) => {
                 type="radio"
                 id={color.hex}
                 name="color"
-                checked={color.hex === props.note.color}
+                checked={color.hex === props.note.color ? "checked" : ""}
                 value={color.hex}
                 onChange={props.handleColorChange}
                 data-testid="color-input"
@@ -58,7 +80,11 @@ const Note = (props) => {
               <button type="submit">Update</button>
             </div>
           ) : (
-            <button type="submit" data-testid="add">
+            <button
+              type="submit"
+              data-testid="add"
+              className={`${hasNoteText && hasColor ? "ready" : ""}`}
+            >
               Add
             </button>
           )}
@@ -68,4 +94,4 @@ const Note = (props) => {
   );
 };
 
-export default Note;
+export default Form;
