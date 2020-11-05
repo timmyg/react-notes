@@ -13,8 +13,8 @@ const Form = (props) => {
     { hex: "#fdd835" },
     { hex: "#fb8c00" },
   ];
-  const hasNoteText = props.note.text.length;
-  const hasColor = props.note.color.length;
+  const hasNoteText = props.note.text?.length;
+  const hasColor = props.note.color?.length;
   // console.log(props.note.color);
   return (
     <div>

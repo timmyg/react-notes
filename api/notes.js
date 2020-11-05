@@ -7,31 +7,51 @@ export default async (req, res) => {
   } = process.env;
   const base = new Airtable({ apiKey: airtableApiKey }).base(airtableBase);
   const notesTable = base("notes");
-  if (req.method === "GET") {
-    res.statusCode = 200;
-    const allNotes = await notesTable
-      .select({ sort: [{ field: "createdAt", direction: "asc" }] })
-      .all();
-    const notes = allNotes.map((n) => {
-      return n.fields;
-    });
-    res.send(notes);
-  } else if (req.method === "POST") {
-    const { text, color } = JSON.parse(req.body);
-    const newNote = await notesTable.create({
-      text,
-      color,
-    });
-    res.statusCode = 201;
-    return res.send({ id: newNote.id, ...newNote.fields });
-  } else if (req.method === "PUT") {
-    res.statusCode = 200;
-    res.send({ test: req.method });
-  } else if (req.method === "DELETE") {
-    res.statusCode = 200;
-    res.send({ test: req.method });
-  } else {
-    res.statusCode = 404;
-    res.send();
+  switch (req.method) {
+    case "GET": {
+      res.statusCode = 200;
+      const allNotes = await notesTable
+        .select({ sort: [{ field: "createdAt", direction: "asc" }] })
+        .all();
+      const notes = allNotes.map((n) => {
+        return { ...n.fields, id: n.id };
+      });
+      return res.send(notes);
+    }
+    case "POST": {
+      const { text, color, key } = JSON.parse(req.body);
+      const newNote = await notesTable.create({
+        text,
+        color,
+        key,
+      });
+      res.statusCode = 201;
+      return res.send({ id: newNote.id, ...newNote.fields });
+    }
+    case "PUT": {
+      const { text, color, key, id } = JSON.parse(req.body);
+      const fields = {
+        text,
+        color,
+      };
+      await notesTable.update([
+        {
+          id,
+          fields,
+        },
+      ]);
+      res.statusCode = 200;
+      return res.send();
+    }
+    case "DELETE": {
+      console.log(JSON.parse(req.body));
+      const { id } = JSON.parse(req.body);
+      await notesTable.destroy([id]);
+      res.statusCode = 200;
+      return res.send();
+    }
+    default:
+      res.statusCode = 404;
+      return res.send();
   }
 };

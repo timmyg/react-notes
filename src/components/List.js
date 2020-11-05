@@ -2,11 +2,11 @@ import "./List.css";
 import Note from "./Note";
 
 const List = (props) => {
-  if (props.notes.length) {
-    return props.notes.map((note) => (
+  if (Object.keys(props.notes).length) {
+    return Object.keys(props.notes).map((key) => (
       <Note
-        key={note.id}
-        note={note}
+        key={key}
+        note={props.notes[key]}
         onHandleEdit={props.onHandleEdit}
         onHandleDelete={props.onHandleDelete}
       />
