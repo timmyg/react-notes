@@ -15,7 +15,6 @@ const Form = (props) => {
   ];
   const hasNoteText = props.note.text?.length;
   const hasColor = props.note.color?.length;
-  // console.log(props.note.color);
   return (
     <div>
       <header>

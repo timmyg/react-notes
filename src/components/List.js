@@ -9,10 +9,15 @@ const List = (props) => {
         note={props.notes[key]}
         onHandleEdit={props.onHandleEdit}
         onHandleDelete={props.onHandleDelete}
+        isLoading={props.isLoading}
       />
     ));
   } else {
-    return <div className="empty">No notes yet</div>;
+    return (
+      <div className="empty">
+        {props.isLoading ? "Loading..." : "No notes yet"}
+      </div>
+    );
   }
 };
 

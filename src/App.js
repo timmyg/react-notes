@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Form from "./components/Form";
 import List from "./components/List";
-// import { useNotes } from "./hooks/notes";
 import "./App.css";
 
 function App() {
   const [note, setNote] = useState({ text: "", color: "", key: "" });
   const [notes, setNotes] = useState({});
   const [isEditMode, setEditMode] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/notes")
@@ -17,12 +17,10 @@ function App() {
         response.map((note) => {
           return (notes[note.key] = note);
         });
-        console.log("set notes", notes);
         setNotes(notes);
+        setIsLoading(false);
       });
   }, []);
-
-  useEffect(() => {}, [notes]);
 
   const handleColorChange = (event) => {
     setNote({ ...note, color: event.currentTarget.value });
@@ -48,9 +46,7 @@ function App() {
 
   const onHandleDelete = (note) => {
     let notesTemp = { ...notes };
-    // const i = notesTemp.findIndex((n) => n.id === note.id);
     delete notesTemp[note.key];
-    // notesTemp.splice(i, 1);
     setNotes(notesTemp);
     setEditMode(false);
     fetch(`/api/notes`, {
@@ -101,6 +97,7 @@ function App() {
           notes={notes}
           onHandleEdit={onHandleEdit}
           onHandleDelete={onHandleDelete}
+          isLoading={isLoading}
         />
       </div>
     </div>

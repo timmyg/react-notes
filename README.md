@@ -1,16 +1,31 @@
-# Getting Started with Create React App
+# Notes CRUD app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It creates notes that are persisted via Airtable with serverless functions.
 
-See a [demo](https://react-notes-nu.vercel.app/) here.
+See a demo [here](https://react-notes-nu.vercel.app/).
 
-## Available Scripts
+## Running locally
 
-In the project directory, you can run:
+##### Install dependencies:
 
-### `vercel dev`
+```
+yarn install
+```
 
-Runs the app in the development mode with serverless functions in the `api` directory.\
+##### You must set the following environment variables in `.env` in the project directory:
+
+```
+airtable_base="appOd..."
+airtable_api_key="keyED..."
+```
+
+##### In the project directory, run:
+
+```
+vercel dev
+```
+
+Runs the app in development mode with serverless functions in the `api` directory.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\

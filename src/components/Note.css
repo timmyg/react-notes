@@ -1,9 +1,7 @@
 .note {
   max-width: 160px;
-  /* position: relative; */
   padding: 16px;
   float: left;
-  /* height: inherit; */
   color: white;
   word-break: break-all;
   border-radius: 4px;

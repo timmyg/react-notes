@@ -44,7 +44,6 @@ export default async (req, res) => {
       return res.send();
     }
     case "DELETE": {
-      console.log(JSON.parse(req.body));
       const { id } = JSON.parse(req.body);
       await notesTable.destroy([id]);
       res.statusCode = 200;
