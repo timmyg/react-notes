@@ -59,7 +59,7 @@ function App() {
     });
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
     let notesTemp = { ...notes };
     if (isEditMode) {
@@ -71,10 +71,14 @@ function App() {
     } else {
       note.key = Math.random().toString(36).substring(7);
       notesTemp[note.key] = note;
-      fetch(`/api/notes`, {
+      setNotes(notesTemp);
+      resetNote();
+      const response = await fetch(`/api/notes`, {
         method: "POST",
         body: JSON.stringify(note),
       });
+      const newNote = await response.json();
+      notesTemp[note.key] = newNote;
     }
     setNotes(notesTemp);
     resetNote();
