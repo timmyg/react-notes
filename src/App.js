@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "./components/Form";
 import List from "./components/List";
+// import { useNotes } from "./hooks/notes";
 import "./App.css";
 
 function App() {
   const [note, setNote] = useState({ text: "", color: "" });
   const [notes, setNotes] = useState([]);
   const [isEditMode, setEditMode] = useState(false);
+
+  useEffect(() => {
+    console.log("useEffect");
+    fetch("/api/notes")
+      .then((res) => res.json())
+      .then((response) => {
+        setNotes(response);
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log("notes changed");
+  }, [notes]);
 
   const handleColorChange = (event) => {
     setNote({ ...note, color: event.currentTarget.value });
@@ -44,9 +58,17 @@ function App() {
     if (isEditMode) {
       const i = notesTemp.findIndex((n) => n.id === note.id);
       notesTemp[i] = note;
+      fetch(`/api/notes`, {
+        method: "PUT",
+        body: JSON.stringify(note),
+      });
     } else {
       note.id = Math.random().toString(36).substring(7);
       notesTemp.push(note);
+      fetch(`/api/notes`, {
+        method: "POST",
+        body: JSON.stringify(note),
+      });
     }
     setNotes(notesTemp);
     resetNote();

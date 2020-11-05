@@ -29,6 +29,7 @@ button[type="submit"] {
   display: inline-block;
   position: relative;
   width: 48px;
+  height: 48px;
 }
 
 .color-wrapper label {

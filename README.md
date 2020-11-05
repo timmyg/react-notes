@@ -8,9 +8,9 @@ See a [demo](https://react-notes-nu.vercel.app/) here.
 
 In the project directory, you can run:
 
-### `yarn start`
+### `vercel dev`
 
-Runs the app in the development mode.\
+Runs the app in the development mode with serverless functions in the `api` directory.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
