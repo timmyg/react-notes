@@ -5,27 +5,29 @@ export default async (req, res) => {
     airtable_base: airtableBase,
     airtable_api_key: airtableApiKey,
   } = process.env;
-  console.log(airtableBase, airtableApiKey);
   const base = new Airtable({ apiKey: airtableApiKey }).base(airtableBase);
   const notesTable = base("notes");
   if (req.method === "GET") {
     res.statusCode = 200;
-    const allNotes = await notesTable.select().all();
-    res.send(allNotes);
+    const allNotes = await notesTable
+      .select({ sort: [{ field: "createdAt", direction: "asc" }] })
+      .all();
+    const notes = allNotes.map((n) => {
+      return n.fields;
+    });
+    res.send(notes);
   } else if (req.method === "POST") {
     const { text, color } = JSON.parse(req.body);
-    const data = await notesTable.create({
+    const newNote = await notesTable.create({
       text,
       color,
     });
     res.statusCode = 201;
-    res.send({ test: req.method });
+    return res.send({ id: newNote.id, ...newNote.fields });
   } else if (req.method === "PUT") {
-    console.log(req.body);
     res.statusCode = 200;
     res.send({ test: req.method });
   } else if (req.method === "DELETE") {
-    console.log(req.body);
     res.statusCode = 200;
     res.send({ test: req.method });
   } else {
