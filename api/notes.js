@@ -6,6 +6,10 @@ export default async (req, res) => {
     airtable_base: airtableBase,
     airtable_api_key: airtableApiKey,
   } = process.env;
+  console.log(process.env.airtable_base);
+  console.log(process.env.airtable_api_key);
+  console.log(object);
+  console.log({ airtableBase, airtableApiKey });
   const base = new Airtable({ apiKey: airtableApiKey }).base(airtableBase);
   const notesTable = base("notes");
   switch (req.method) {
