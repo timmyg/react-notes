@@ -1,6 +1,7 @@
 const Airtable = require("airtable");
 
 export default async (req, res) => {
+  console.log(process.env);
   const {
     airtable_base: airtableBase,
     airtable_api_key: airtableApiKey,
